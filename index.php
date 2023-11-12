@@ -82,7 +82,7 @@ $messages = $guestBook->getMessages();
     <strong><label for="username">Username :</label></strong>
     <input type="text" id="username" name="username" required>
 
-    <strong><label for="message" style="display: block; text-align: center;">Message :</label></strong>
+    <strong><label for="message">Message :</label></strong>
     <textarea id="message" name="message" required></textarea>
 
 
