@@ -1,5 +1,4 @@
-/* style/style.css */
-
+/* Style de base */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -9,6 +8,7 @@ body {
     min-height: 100vh;
 }
 
+/* Styles du formulaire */
 form {
     max-width: 400px;
     margin: 20px auto;
@@ -39,6 +39,7 @@ form textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    
 }
 
 form input[type="submit"] {
@@ -48,10 +49,12 @@ form input[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.5s ease; /* Ajout de la transition ici */
 }
 
 form input[type="submit"]:hover {
     background-color: #45a049;
+    transition: background-color 0.3s ease; /* Modification de la transition ici */
 }
 
 .error-message {
@@ -60,6 +63,7 @@ form input[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
+/* Styles de l'en-tête et du pied de page */
 header {
     background-color: #240090;
     padding: 10px;
@@ -76,25 +80,16 @@ footer {
     width: 100%;
 }
 
-
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
+#message {
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 400px;
     display: block;
-    margin-bottom: 5px;
+    margin: 0 auto;
+    min-height: 100px;
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    font-family: Arial, sans-serif;
-}
-
+/* Styles pour le bouton personnalisé avec une transition */
 button {
     background-color: #240090;
     color: white;
@@ -104,34 +99,97 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    transition: background-color 0.5s ease; /* Ajout de la transition ici */
 }
 
 button:hover {
     background-color: #45a049;
+    transition: background-color 0.3s ease; /* Modification de la transition ici */
 }
 
+/* Styles pour la section des commentaires */
 #comments {
     background-color: #e3e3e3;
     border-radius: 10px;
     margin: 20px auto;
-    padding: 1px;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
     max-width: 400px;
     line-height: 170%;
     text-align: justify;
 }
 
-#comments p {
-    word-wrap: break-word;
-    padding-right: 50px;
-    padding-left: 50px;
-    text-align: justify;
+.btn {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #fff;
+    color: #240090;
+    border: 2px solid #240090;
+    border-radius: 6px;
+    margin: auto;
+    font-weight: 800;
+    transition: all 0.5s ease;
 }
 
-#message {
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 400px;
+.btn--stripe {
+    overflow: hidden;
+    position: relative;
+}
+
+.btn--stripe:after {
+    content: '';
     display: block;
-    margin: 0 auto;
-    min-height: 100px;
+    height: 7px;
+    width: 100%;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #240090,
+        #240090 1px,
+        transparent 2px,
+        transparent 5px
+    );
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-top: 1px solid #240090;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-size: 7px 7px;
+}
+
+.btn--stripe:hover {
+    background-color: #240090;
+    color: #fff;
+    border-color: #000;
+}
+
+.btn--stripe:hover:after {
+    background-image: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 1px,
+        transparent 2px,
+        transparent 5px
+    );
+    border-top: 1px solid #000;
+    animation: stripe-slide 12s infinite linear forwards;
+}
+
+.btn--large {
+    width: 50%;
+}
+
+.btn--radius {
+    border-radius: 36px;
+}
+
+@keyframes stripe-slide {
+    0% { background-position: 0% 0; }
+    100% { background-position: 100% 0; }
 }

@@ -68,6 +68,7 @@ $messages = $guestBook->getMessages();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="book-creative.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Guest Book</title>
 </head>
@@ -75,22 +76,24 @@ $messages = $guestBook->getMessages();
 
 <?php include("elements/header.php"); ?>
 
-<strong><h3>Merci de prendre le temps de nous donner votre avis.</h3></strong>
+<strong><h1>Votre avis nous intéresse</h1></strong>
+
+<strong><h2>Merci de prendre le temps de nous donner votre avis.</h2></strong>
 
 <!-- Formulaire -->
 <form action="" method="post">
-    <strong><label for="username">Username :</label></strong>
-    <input type="text" id="username" name="username" required>
+    <strong><label for="username">Votre pseudo :</label></strong>
+    <input type="text" id="username" name="username" required placeholder="BAKA">
 
-    <strong><label for="message">Message :</label></strong>
-    <textarea id="message" name="message" required></textarea>
+    <strong><label for="message">Votre message :</label></strong>
+    <textarea id="message" name="message" required placeholder="Test 1-2 1-2"></textarea>
 
 
     </br>
-    <button type="submit">VALIDER</button>
+    <button class="btn btn--stripe btn--radius" type="submit">VALIDER</button>
 </form>
 
-<h2>Messages</h2>
+<h2>Vos messages</h2>
 <div id="comments">
     <?php
     // Inverser l'ordre des commentaires au lieu de le faire en flex
