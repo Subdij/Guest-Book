@@ -87,7 +87,7 @@ $messages = $guestBook->getMessages();
 
 
     </br>
-    <button type="submit">SUBMIT</button>
+    <button type="submit">VALIDER</button>
 </form>
 
 <h2>Messages</h2>
