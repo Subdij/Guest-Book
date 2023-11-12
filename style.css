@@ -115,8 +115,6 @@ button:hover {
     border-radius: 10px;
     margin: 20px auto;
     padding: 1px;
-    align-items: center;
-    text-align: center;
     max-width: 400px;
     line-height: 170%;
     text-align: justify;
@@ -131,8 +129,9 @@ button:hover {
 
 #message {
     max-width: 300px;
-    max-height: 200px;
+    min-width: 300px;
+    max-height: 400px;
     display: block;
     margin: 0 auto;
-    text-align: center;
+    min-height: 100px;
 }
