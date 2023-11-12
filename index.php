@@ -93,7 +93,7 @@ $messages = $guestBook->getMessages();
 <h2>Messages</h2>
 <div id="comments">
     <?php
-    // Inverser l'ordre des commentaires
+    // Inverser l'ordre des commentaires au lieu de le faire en flex
     $reversedMessages = array_reverse($messages);
 
     // Afficher les messages
