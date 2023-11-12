@@ -11,21 +11,21 @@ form {
     max-width: 400px;
     margin: 20px auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    padding-bottom: 18px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 13px;
     color: #333;
     text-align: left;
 }
 
 form label[for="message"] {
     display: block;
-    text-align: center;
     font-weight: bold;
     text-align: left;
 }
@@ -35,7 +35,7 @@ form input[type="email"],
 form textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 28px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -64,14 +64,14 @@ form input[type="submit"]:hover {
 }
 
 header {
-    background-color: #240090;
+    background-color: #000;
     padding: 10px;
     color: white;
     text-align: center;
 }
 
 footer {
-    background-color: #240090;
+    background-color: #000;
     padding-top: 10px;
     padding-bottom: 10px;
     color: white;
@@ -89,7 +89,7 @@ footer {
 }
 
 button {
-    background-color: #240090;
+    background-color: #000;
     color: white;
     padding: 10px;
     padding-right: 20px;
@@ -126,8 +126,8 @@ button:hover {
     padding-right: 30px;
     padding-left: 30px;
     background-color: #fff;
-    color: #240090;
-    border: 2px solid #240090;
+    color: #000;
+    border: 2px solid #000;
     border-radius: 6px;
     margin: auto;
     font-weight: 800;
@@ -146,14 +146,14 @@ button:hover {
     width: 100%;
     background-image: repeating-linear-gradient(
         45deg,
-        #240090,
-        #240090 1px,
+        #000,
+        #000 1px,
         transparent 2px,
         transparent 5px
     );
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-top: 1px solid #240090;
+    border-top: 1px solid #000;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -161,7 +161,7 @@ button:hover {
 }
 
 .btn--stripe:hover {
-    background-color: #240090;
+    background-color: #000;
     color: #fff;
     border-color: #000;
 }
