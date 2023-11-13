@@ -1,66 +1,38 @@
 <?php
+// Inclusion des classes
+require_once('class/GuestBook.php');
+require_once('class/Message.php');
 
-// Vérifier si le formulaire a été soumis (méthode POST)
+// Création d'un objet GuestBook avec le chemin vers le fichier JSON
+$guestBook = new GuestBook("data/messages.json");
+
+// Récupération de tous les messages
+$messages = $guestBook->getMessages();
+
+// Vérification si le formulaire a été soumis (méthode POST)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier l'existence des fichiers GuestBook.php et Message.php avant de les inclure
+    // Vérification de l'existence des fichiers GuestBook.php et Message.php avant de les inclure
     if (file_exists('class/GuestBook.php') && file_exists('class/Message.php')) {
-        // Inclure les fichiers nécessaires
-        require_once('class/GuestBook.php');
-        require_once('class/Message.php');
+        // Inclusion des fichiers
 
-        // Récupérer les données du formulaire
+        // Récupération des données du formulaire
         $username = $_POST["username"];
         $messageText = $_POST["message"];
 
-        // Créer un nouvel objet Message avec les données du formulaire
+        // Création d'un nouvel objet Message avec les données du formulaire
         $newMessage = new Message($username, $messageText);
 
-        // Initialiser un objet GuestBook avec le chemin vers le fichier JSON
-        $guestBook = new GuestBook("data/messages.json");
-
-        // Ajouter le nouveau message
+        // Ajout du nouveau message à l'objet GuestBook
         $guestBook->addMessage($newMessage);
 
-        // Rediriger vers la même page pour éviter la duplication du dernier commentaire lors du rafraîchissement
+        // Redirection vers la même page pour éviter la duplication du dernier commentaire lors du rafraîchissement
         header("Location: {$_SERVER['REQUEST_URI']}");
         exit();
     } else {
-        // Gérer l'erreur si l'un des fichiers requis est manquant
+        // Gestion de l'erreur si l'un des fichiers requis est manquant
         die("Erreur: Fichier manquant.");
     }
 }
-
-// Vérifier l'existence du fichier GuestBook.php avant de l'inclure
-if (file_exists('class/GuestBook.php')) {
-    require_once('class/GuestBook.php');
-} else {
-    echo "Le fichier GuestBook.php n'existe pas.";
-}
-
-// Vérifier l'existence du fichier Message.php avant de l'inclure
-if (file_exists('class/Message.php')) {
-    require_once('class/Message.php');
-} else {
-    echo "Le fichier Message.php n'existe pas.";
-}
-
-// Initialiser un objet GuestBook avec le chemin vers le fichier JSON
-$guestBook = new GuestBook("data/messages.json");
-
-// Si le formulaire n'a pas été soumis, vérifier à nouveau s'il a été soumis et traiter les données
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $messageText = $_POST["message"];
-
-    // Créer un nouvel objet Message avec les données du formulaire
-    $newMessage = new Message($username, $messageText);
-
-    // Ajouter le nouveau message
-    $guestBook->addMessage($newMessage);
-}
-
-// Récupérer tous les messages
-$messages = $guestBook->getMessages();
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +49,6 @@ $messages = $guestBook->getMessages();
 <?php include("elements/header.php"); ?>
 
 <strong><h1>Votre avis nous intéresse</h1></strong>
-
 <strong><h2>Merci de prendre le temps de nous donner votre avis.</h2></strong>
 
 <!-- Formulaire -->
@@ -88,20 +59,23 @@ $messages = $guestBook->getMessages();
     <strong><label for="message">Votre message :</label></strong>
     <textarea id="message" name="message" required placeholder="Test 1-2 1-2"></textarea>
 
-
     </br>
     <button class="btn btn--stripe btn--radius" type="submit">VALIDER</button>
 </form>
 
+<!-- Affichage des messages -->
 <h2>Vos messages</h2>
 <div id="comments">
     <?php
-    // Inverser l'ordre des commentaires au lieu de le faire en flex
-    $reversedMessages = array_reverse($messages);
+    // Vérification de l'existence de messages
+    if ($messages) {
+        // Inversion de l'ordre des commentaires pour afficher les plus récents en premier
+        $reversedMessages = array_reverse($messages);
 
-    // Afficher les messages
-    foreach ($reversedMessages as $message) {
-        echo $message->toHTML();
+        // Affichage des messages
+        foreach ($reversedMessages as $message) {
+            echo $message->toHTML();
+        }
     }
     ?>
 </div>
