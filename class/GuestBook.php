@@ -26,8 +26,15 @@ class GuestBook {
 
     // Méthode pour ajouter un nouveau message
     public function addMessage(Message $message) {
-        // Ajouter le message à la liste et sauvegarder les messages mis à jour
-        $this->messages[] = $message;
+        // Échapper les données avant stockage
+        $escapedUsername = htmlspecialchars($message->getUsername());
+        $escapedMessage = htmlspecialchars($message->getMessage());
+
+        // Nouvel objet Message avec les données échappées
+        $escapedMessageObj = new Message($escapedUsername, $escapedMessage, $message->getDate());
+
+        // Ajout le message échappé à la liste et sauvegarder les messages mis à jour
+        $this->messages[] = $escapedMessageObj;
         $this->saveMessages();
     }
 

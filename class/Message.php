@@ -37,7 +37,11 @@ class Message {
 
     // Méthode pour convertir le message en HTML
     public function toHTML() {
-        return "<p><strong>{$this->username}</strong> <em>{$this->date->format('d/m/Y à H:i')}</em><br>{$this->message}</p>";
+        $escapedUsername = htmlspecialchars($this->username);
+        $escapedDate = htmlspecialchars($this->date->format('d/m/Y à H:i'));
+        $escapedMessage = htmlspecialchars($this->message);
+    
+        return "<p><strong>{$escapedUsername}</strong> <em>{$escapedDate}</em><br>{$escapedMessage}</p>";
     }
 
     // Méthode pour convertir le message en format JSON
