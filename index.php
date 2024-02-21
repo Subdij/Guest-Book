@@ -10,14 +10,14 @@ $guestBook = new GuestBook("data/messages.json");
 $messages = $guestBook->getMessages();
 
 // Vérification si le formulaire a été soumis (méthode POST)
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification de l'existence des fichiers GuestBook.php et Message.php avant de les inclure
     if (file_exists('class/GuestBook.php') && file_exists('class/Message.php')) {
         // Inclusion des fichiers
 
         // Récupération des données du formulaire
-        $username = htmlspecialchars($_POST["username"] ?? '');
-        $messageText = htmlspecialchars($_POST["message"] ?? '');        
+        $username = $_POST["username"];
+        $messageText = $_POST["message"];
 
         // Création d'un nouvel objet Message avec les données du formulaire
         $newMessage = new Message($username, $messageText);
@@ -29,12 +29,10 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: {$_SERVER['REQUEST_URI']}");
         exit();
     } else {
-        die("Erreur: Fichiers requis manquants.");
+        // Gestion de l'erreur si l'un des fichiers requis est manquant
+        die("Erreur: Fichier manquant.");
     }
-} else {
-    die("Erreur: Formulaire incomplet.");
 }
-
 ?>
 
 <!DOCTYPE html>
