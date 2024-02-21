@@ -13,7 +13,7 @@ $guestBook = new GuestBook("data/messages.json");
 $messages = $guestBook->getMessages();
 
 // Vérification si le formulaire a été soumis (méthode POST)
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_COOKIE['formSubmitted']) && $_COOKIE['formSubmitted'] == 'true') {
     // Vérification de l'existence des fichiers GuestBook.php et Message.php avant de les inclure
     if (file_exists('class/GuestBook.php') && file_exists('class/Message.php')) {
         // Inclusion des fichiers
@@ -27,14 +27,17 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Ajout du nouveau message à l'objet GuestBook
         $guestBook->addMessage($newMessage);
-
-        // Redirection vers la même page pour éviter la duplication du dernier commentaire lors du rafraîchissement
-        header("Location: {$_SERVER['REQUEST_URI']}");
-        exit();
+        
+        // Réinitialisation du cookie après le traitement pour éviter une soumission répétée
+        setcookie('formSubmitted', '', time() - 3600, '/');
     } else {
         // Gestion de l'erreur si l'un des fichiers requis est manquant
         die("Erreur: Fichier manquant.");
     }
+
+    // Redirection vers la même page pour éviter la duplication du dernier commentaire lors du rafraîchissement
+    header("Location: {$_SERVER['REQUEST_URI']}");
+    exit();
 }
 ?>
 
@@ -55,7 +58,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 <strong><h2>Merci de prendre le temps de nous donner votre avis.</h2></strong>
 
 <!-- Formulaire -->
-<form name="contact" method="POST" data-netlify="true">
+<form name="guestbook" method="post" data-netlify="true" onsubmit="setCookie()">
     <strong><label for="username">Votre pseudo :</label></strong>
     <input type="text" id="username" name="username" required placeholder="BAKA">
 
