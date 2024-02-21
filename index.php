@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // Inclusion des classes
 require_once('class/GuestBook.php');
 require_once('class/Message.php');
