@@ -1,1 +1,40 @@
-Erreur: Formulaire incomplet.
+
+Warning: Undefined array key "REQUEST_METHOD" in C:\xampp\htdocs\Guest-Book\index.php on line 13
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="book-creative.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Guest Book</title>
+</head>
+<body>
+
+<header><h1>Guest Book | Ziyad</h1></header>
+<strong><h1>Votre avis nous intéresse</h1></strong>
+<strong><h2>Merci de prendre le temps de nous donner votre avis.</h2></strong>
+
+<!-- Formulaire -->
+<form action="" method="post">
+    <strong><label for="username">Votre pseudo :</label></strong>
+    <input type="text" id="username" name="username" required placeholder="BAKA">
+
+    <strong><label for="message">Votre message :</label></strong>
+    <textarea id="message" name="message" required placeholder="Test 1-2 1-2"></textarea>
+
+    </br>
+    <button class="btn btn--stripe btn--radius" type="submit">VALIDER</button>
+</form>
+
+<!-- Affichage des messages -->
+<h2>Vos messages</h2>
+<div id="comments">
+    <p><strong>tom</strong> <em>13/11/2023 à 16:46</em><br>test message </p><p><strong>Ziyad</strong> <em>13/11/2023 à 16:33</em><br>mon message en POO TD4 
+php
+</p><p><strong>Subdij</strong> <em>12/11/2023 à 14:18</em><br>c&#039;est bon :)</p><p><strong>Subdij</strong> <em>12/11/2023 à 14:18</em><br>je fais ca juste pour faire descendre le footer</p><p><strong>Subdij</strong> <em>12/11/2023 à 14:17</em><br>On peux jouer un jour ouu ?</p><p><strong>Subdij</strong> <em>12/11/2023 à 14:17</em><br>Sa remplie l&#039;espaaaace</p><p><strong>Subdij</strong> <em>12/11/2023 à 11:38</em><br>Lets gooo sa marche !!!</p></div>
+
+<footer><p>&copy; 2023 Guest Book | Ziyad</p></footer>
+</body>
+</html>
