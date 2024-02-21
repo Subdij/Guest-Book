@@ -13,7 +13,7 @@ $guestBook = new GuestBook("data/messages.json");
 $messages = $guestBook->getMessages();
 
 // Vérification si le formulaire a été soumis (méthode POST)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification de l'existence des fichiers GuestBook.php et Message.php avant de les inclure
     if (file_exists('class/GuestBook.php') && file_exists('class/Message.php')) {
         // Inclusion des fichiers
