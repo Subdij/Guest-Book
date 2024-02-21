@@ -55,7 +55,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 <strong><h2>Merci de prendre le temps de nous donner votre avis.</h2></strong>
 
 <!-- Formulaire -->
-<form action="" method="post">
+<form name="contact" method="POST" data-netlify="true">
     <strong><label for="username">Votre pseudo :</label></strong>
     <input type="text" id="username" name="username" required placeholder="BAKA">
 
